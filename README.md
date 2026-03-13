@@ -1,6 +1,6 @@
-![Android](https://img.shields.io/badge/platform-Android-green)
-![Release](https://img.shields.io/github/v/release/NikhilKY64/Universal_Calculator_App)
-![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/total)
+[![Android](https://img.shields.io/badge/platform-Android-green)](https://github.com/NikhilKY64/Universal_Calculator_App/releases/tag/v1.4)
+[![Release](https://img.shields.io/github/v/release/NikhilKY64/Universal_Calculator_App)](https://github.com/NikhilKY64/Universal_Calculator_App/releases/tag/v1.4)
+[![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/total)](https://github.com/NikhilKY64/Universal_Calculator_App/releases/tag/v1.4)
 
 
 

@@ -1,6 +1,6 @@
 [![Platform](https://img.shields.io/badge/platform-Android-green)](https://github.com/NikhilKY64/Universal_Calculator_App/releases)
 
-[![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.2/total-blue)](https://github.com/NikhilKY64/Universal_Calculator_App/releases/tag/v1.2)
+[![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.2/total)](https://github.com/NikhilKY64/Universal_Calculator_App/releases/tag/v1.2)
 [![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.4/total)](https://github.com/NikhilKY64/Universal_Calculator_App/releases/tag/v1.4)
 
 # Universal Calculator App

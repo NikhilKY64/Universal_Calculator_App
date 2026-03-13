@@ -1,6 +1,7 @@
 ![Release](https://img.shields.io/github/v/release/NikhilKY64/Universal_Calculator_App)
 ![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/total)
-![License](https://img.shields.io/github/license/NikhilKY64/Universal_Calculator_App)
+
+
 
 # Universal Calculator App
 

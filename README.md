@@ -1,4 +1,5 @@
 ![Platform](https://img.shields.io/badge/platform-Android-green)
+
 ![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.2/total)
 ![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.4/total)
 

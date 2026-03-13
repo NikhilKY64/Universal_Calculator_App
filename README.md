@@ -1,13 +1,10 @@
-### Release v1.2
 ![Platform](https://img.shields.io/badge/platform-Android-green)
 ![Release](https://img.shields.io/badge/release-v1.2-blue)
 ![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.2/total)
 
-### Release v1.4
 ![Platform](https://img.shields.io/badge/platform-Android-green)
 ![Release](https://img.shields.io/badge/release-v1.4-blue)
 ![Downloads](https://img.shields.io/github/downloads/NikhilKY64/Universal_Calculator_App/v1.4/total)
-
 
 
 # Universal Calculator App

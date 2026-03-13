@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.universalcalculator.viewmodel.CalculatorAction
 import com.universalcalculator.viewmodel.CalculatorViewModel
+import com.universalcalculator.ui.ads.AdBanner
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,68 +59,78 @@ fun StandardCalculatorScreen(
             )
         }
     ) { padding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Bottom
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
-                horizontalAlignment = Alignment.End,
+                    .fillMaxSize()
+                    .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 58.dp), // leave 58dp gap for banner
                 verticalArrangement = Arrangement.Bottom
             ) {
-                Text(
-                    text = expression,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.End,
-                    maxLines = 2
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = error ?: result,
-                    style = MaterialTheme.typography.displayLarge.copy(
-                        fontWeight = FontWeight.Light,
-                        fontSize = if ((error ?: result).length > 10) 40.sp else 57.sp
-                    ),
-                    color = if (error != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
-                    textAlign = TextAlign.End,
-                    maxLines = 1
-                )
-                Spacer(modifier = Modifier.height(24.dp))
-            }
-
-            val buttons = listOf(
-                listOf("C", "(", ")", "÷"),
-                listOf("7", "8", "9", "×"),
-                listOf("4", "5", "6", "−"),
-                listOf("1", "2", "3", "+"),
-                listOf("0", ".", "⌫", "=")
-            )
-
-            buttons.forEach { row ->
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    horizontalAlignment = Alignment.End,
+                    verticalArrangement = Arrangement.Bottom
                 ) {
-                    row.forEach { symbol ->
-                        CalculatorButton(
-                            symbol = symbol,
-                            modifier = Modifier
-                                .weight(1f)
-                                .aspectRatio(1f)
-                                .padding(6.dp),
-                            onClick = {
-                                resolveAction(symbol, viewModel)
-                            }
-                        )
+                    Text(
+                        text = expression,
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.End,
+                        maxLines = 2
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = error ?: result,
+                        style = MaterialTheme.typography.displayLarge.copy(
+                            fontWeight = FontWeight.Light,
+                            fontSize = if ((error ?: result).length > 10) 40.sp else 57.sp
+                        ),
+                        color = if (error != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
+                        textAlign = TextAlign.End,
+                        maxLines = 1
+                    )
+                    Spacer(modifier = Modifier.height(24.dp))
+                }
+
+                val buttons = listOf(
+                    listOf("C", "(", ")", "÷"),
+                    listOf("7", "8", "9", "×"),
+                    listOf("4", "5", "6", "−"),
+                    listOf("1", "2", "3", "+"),
+                    listOf("0", ".", "⌫", "=")
+                )
+
+                buttons.forEach { row ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        row.forEach { symbol ->
+                            CalculatorButton(
+                                symbol = symbol,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .aspectRatio(1f)
+                                    .padding(6.dp),
+                                onClick = {
+                                    resolveAction(symbol, viewModel)
+                                }
+                            )
+                        }
                     }
                 }
             }
+
+            // Banner ad pinned at the very bottom of the screen
+            AdBanner(
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
         }
     }
 

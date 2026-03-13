@@ -72,7 +72,7 @@ class ConverterViewModel : ViewModel() {
         _fromUnit.value = _toUnit.value
         _toUnit.value = temp
         
-        val tempVal = _inputValue.value
+
         _inputValue.value = _resultValue.value
         // Don't directly set result value back to temp to avoid precision loss feedback loop
         // Recalculating will set appropriate string formatting based on new inputs

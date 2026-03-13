@@ -3,6 +3,7 @@ package com.universalcalculator
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.google.android.gms.ads.MobileAds
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
@@ -27,6 +28,15 @@ import kotlinx.coroutines.runBlocking
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Initialize AdMob SDK first
+        MobileAds.initialize(this)
+
+        // Then configure AdMob test device
+        val testDeviceIds = listOf("471CE01F28D67021851268F8108E8EE0")
+        val configuration = com.google.android.gms.ads.RequestConfiguration.Builder()
+            .setTestDeviceIds(testDeviceIds)
+            .build()
+        MobileAds.setRequestConfiguration(configuration)
 
         setContent {
 

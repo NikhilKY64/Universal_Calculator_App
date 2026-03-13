@@ -11,8 +11,8 @@ android {
         applicationId = "com.universalcalculator"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.1"
+        versionCode = 4
+        versionName = "1.4"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -69,6 +69,9 @@ dependencies {
     
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // AdMob
+    implementation("com.google.android.gms:play-services-ads:23.0.0")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

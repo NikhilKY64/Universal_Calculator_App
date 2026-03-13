@@ -39,9 +39,9 @@ class ParsedEquation(val lhs: ExprNode, val rhs: ExprNode, val relation: Relatio
 
 fun parseEquation(eqStr: String, evaluator: ExpressionEvaluator): ParsedEquation? {
     if (eqStr.isBlank()) return null
-    var relation = Relation.EQUAL
-    var lhsStr = ""
-    var rhsStr = ""
+    var relation: Relation
+    var lhsStr: String
+    var rhsStr: String
 
     when {
         eqStr.contains("<=") -> { relation = Relation.LESS_EQUAL; val p = eqStr.split("<="); lhsStr = p[0]; rhsStr = p[1] }

@@ -113,6 +113,16 @@ fun DateCalculationScreen(
                 }
             }
 
+            // Provide remaining vertical space for the Native Ad
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                contentAlignment = Alignment.BottomCenter
+            ) {
+                com.universalcalculator.ui.ads.NativeAdBanner()
+            }
+
             if (showStartPicker) {
                 val state = rememberDatePickerState(initialSelectedDateMillis = System.currentTimeMillis())
                 DatePickerDialog(

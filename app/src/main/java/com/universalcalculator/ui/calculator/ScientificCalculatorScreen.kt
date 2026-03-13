@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.universalcalculator.viewmodel.CalculatorViewModel
+import com.universalcalculator.ui.ads.AdBanner
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,72 +43,82 @@ fun ScientificCalculatorScreen(
             )
         }
     ) { padding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(8.dp),
-            verticalArrangement = Arrangement.Bottom
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .padding(8.dp),
-                horizontalAlignment = Alignment.End,
+                    .fillMaxSize()
+                    .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 58.dp), // leave 58dp gap for banner
                 verticalArrangement = Arrangement.Bottom
             ) {
-                Text(
-                    text = expression,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.End,
-                    maxLines = 3
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = error ?: result,
-                    style = MaterialTheme.typography.displayLarge.copy(
-                        fontWeight = FontWeight.Light,
-                        fontSize = if ((error ?: result).length > 10) 40.sp else 57.sp
-                    ),
-                    color = if (error != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
-                    textAlign = TextAlign.End,
-                    maxLines = 1
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-
-            val buttons = listOf(
-                listOf("sin", "cos", "tan", "sqrt", "^"),
-                listOf("ln", "log", "x²", "x³", "⌫"),
-                listOf("C", "(", ")", "÷", "×"),
-                listOf("7", "8", "9", "−", "+"),
-                listOf("4", "5", "6", ".", "="),
-                listOf("1", "2", "3", "0", "")
-            )
-
-            buttons.forEach { row ->
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .padding(8.dp),
+                    horizontalAlignment = Alignment.End,
+                    verticalArrangement = Arrangement.Bottom
                 ) {
-                    row.forEach { symbol ->
-                        if (symbol.isNotEmpty()) {
-                            CalculatorButton(
-                                symbol = symbol,
-                                modifier = Modifier
-                                    .weight(1f)
-                                    .padding(4.dp)
-                                    .aspectRatio(if (row.size == 5) 1.2f else 1f),
-                                onClick = { resolveAction(symbol, viewModel) }
-                            )
-                        } else {
-                            Spacer(modifier = Modifier.weight(1f).padding(4.dp))
+                    Text(
+                        text = expression,
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.End,
+                        maxLines = 3
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = error ?: result,
+                        style = MaterialTheme.typography.displayLarge.copy(
+                            fontWeight = FontWeight.Light,
+                            fontSize = if ((error ?: result).length > 10) 40.sp else 57.sp
+                        ),
+                        color = if (error != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
+                        textAlign = TextAlign.End,
+                        maxLines = 1
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+
+                val buttons = listOf(
+                    listOf("sin", "cos", "tan", "sqrt", "^"),
+                    listOf("ln", "log", "x²", "x³", "⌫"),
+                    listOf("C", "(", ")", "÷", "×"),
+                    listOf("7", "8", "9", "−", "+"),
+                    listOf("4", "5", "6", ".", "="),
+                    listOf("1", "2", "3", "0", "")
+                )
+
+                buttons.forEach { row ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        row.forEach { symbol ->
+                            if (symbol.isNotEmpty()) {
+                                CalculatorButton(
+                                    symbol = symbol,
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .padding(4.dp)
+                                        .aspectRatio(if (row.size == 5) 1.2f else 1f),
+                                    onClick = { resolveAction(symbol, viewModel) }
+                                )
+                            } else {
+                                Spacer(modifier = Modifier.weight(1f).padding(4.dp))
+                            }
                         }
                     }
                 }
             }
+
+            // Banner ad pinned at the very bottom of the screen
+            AdBanner(
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
         }
     }
 }

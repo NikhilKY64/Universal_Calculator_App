@@ -17,6 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.universalcalculator.core.converter.ConversionCategory
 import com.universalcalculator.core.converter.UnitItem
 import com.universalcalculator.viewmodel.ConverterViewModel
+import com.universalcalculator.ui.ads.AdBanner
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,43 +54,54 @@ fun ConverterScreen(
             )
         }
     ) { padding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            Column(modifier = Modifier.padding(16.dp).fillMaxWidth()) {
-                Spacer(modifier = Modifier.height(24.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = 58.dp) // leave space for banner
+            ) {
+                Column(modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+                    Spacer(modifier = Modifier.height(24.dp))
 
-                UnitSelector(
-                    label = "From",
-                    units = units,
-                    selectedUnit = fromUnit,
-                    onUnitSelected = { viewModel.setFromUnit(it) },
-                    value = inputValue,
-                    onValueChange = { viewModel.setInputValue(it) },
-                    isReadOnly = false
-                )
+                    UnitSelector(
+                        label = "From",
+                        units = units,
+                        selectedUnit = fromUnit,
+                        onUnitSelected = { viewModel.setFromUnit(it) },
+                        value = inputValue,
+                        onValueChange = { viewModel.setInputValue(it) },
+                        isReadOnly = false
+                    )
 
-                Box(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    FilledIconButton(onClick = { viewModel.swapUnits() }) {
-                        Icon(Icons.Default.SwapVert, contentDescription = "Swap Units")
+                    Box(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        FilledIconButton(onClick = { viewModel.swapUnits() }) {
+                            Icon(Icons.Default.SwapVert, contentDescription = "Swap Units")
+                        }
                     }
-                }
 
-                UnitSelector(
-                    label = "To",
-                    units = units,
-                    selectedUnit = toUnit,
-                    onUnitSelected = { viewModel.setToUnit(it) },
-                    value = resultValue,
-                    onValueChange = {},
-                    isReadOnly = true
-                )
+                    UnitSelector(
+                        label = "To",
+                        units = units,
+                        selectedUnit = toUnit,
+                        onUnitSelected = { viewModel.setToUnit(it) },
+                        value = resultValue,
+                        onValueChange = {},
+                        isReadOnly = true
+                    )
+                }
             }
+
+            // Banner ad pinned at the very bottom of the screen
+            AdBanner(
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
         }
     }
 }

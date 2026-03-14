@@ -66,7 +66,17 @@ class FuncNode(val name: String, val arg: ExprNode) : ExprNode() {
 class ExpressionEvaluator {
     fun evaluate(expression: String, variables: Map<String, Double> = emptyMap()): Double {
         val ast = compile(expression)
-        return ast.eval(variables["x"] ?: 0.0, variables["y"] ?: 0.0)
+        val rawResult = ast.eval(variables["x"] ?: 0.0, variables["y"] ?: 0.0)
+        return cleanResult(rawResult)
+    }
+
+    private fun cleanResult(value: Double): Double {
+        if (value.isNaN() || value.isInfinite()) return value
+        val rounded = kotlin.math.round(value * 1e10) / 1e10
+        return if (kotlin.math.abs(rounded - kotlin.math.round(rounded)) < 1e-10)
+            kotlin.math.round(rounded)
+        else
+            rounded
     }
 
     fun compile(expression: String): ExprNode {

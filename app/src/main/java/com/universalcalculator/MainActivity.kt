@@ -28,15 +28,8 @@ import kotlinx.coroutines.runBlocking
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Initialize AdMob SDK first
+        // Initialize AdMob SDK
         MobileAds.initialize(this)
-
-        // Then configure AdMob test device
-        val testDeviceIds = listOf("471CE01F28D67021851268F8108E8EE0")
-        val configuration = com.google.android.gms.ads.RequestConfiguration.Builder()
-            .setTestDeviceIds(testDeviceIds)
-            .build()
-        MobileAds.setRequestConfiguration(configuration)
 
         setContent {
 

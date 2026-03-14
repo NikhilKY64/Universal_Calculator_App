@@ -25,7 +25,7 @@ import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.google.android.gms.ads.nativead.NativeAdView
 import com.universalcalculator.R
 
-private const val NATIVE_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
+private const val NATIVE_AD_UNIT_ID = "ca-app-pub-2947021890810905/1349648482"
 
 @Composable
 fun NativeAdBanner(modifier: Modifier = Modifier) {

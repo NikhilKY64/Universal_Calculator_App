@@ -107,6 +107,7 @@ app/
  │   │   └── GraphingCalculatorScreen.kt
  │   │
  │   ├── ads/
+ │   │   ├── AdConfig.kt        ← Centralized AdMob IDs
  │   │   ├── AdBanner.kt
  │   │   └── NativeAdBanner.kt
  │   │
@@ -145,6 +146,55 @@ git clone https://github.com/yourusername/Universal_Calculator_App.git
 
 * Android Emulator
 * Physical Android device
+
+---
+
+## AdMob Configuration
+
+All AdMob ad unit IDs are centralized in a single file so you never have to hunt through multiple source files.
+
+### Step 1 — Locate `AdConfig.kt`
+
+```
+app/src/main/java/com/universalcalculator/ui/ads/AdConfig.kt
+```
+
+### Step 2 — Replace the ad unit IDs
+
+Open `AdConfig.kt` and replace the placeholder values with your real AdMob IDs:
+
+```kotlin
+object AdConfig {
+
+    // Replace with your real Banner Ad Unit ID from AdMob dashboard
+    const val BANNER_AD_UNIT_ID = "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX"
+
+    // Replace with your real Native Ad Unit ID from AdMob dashboard
+    const val NATIVE_AD_UNIT_ID = "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX"
+}
+```
+
+### Step 3 — Set your AdMob App ID in the Manifest
+
+The App ID must be set separately in `AndroidManifest.xml` (Google requires it there at runtime).
+Open `app/src/main/AndroidManifest.xml` and replace the value:
+
+```xml
+<meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX"/> <!-- Your AdMob App ID -->
+```
+
+> **Where to find your IDs?**
+> Log in to [AdMob](https://admob.google.com) → Apps → your app → **App settings** for the App ID,
+> and **Ad units** for the Banner / Native ad unit IDs.
+
+> **Using test ads during development?**
+> Use Google's official test IDs so you don't risk policy violations:
+> - **App ID:** `ca-app-pub-3940256099942544~3347511713`
+> - **Banner:** `ca-app-pub-3940256099942544/6300978111`
+> - **Native:** `ca-app-pub-3940256099942544/2247696110`
+> But for real ads you have to use Real ad unit IDs
 
 ---
 

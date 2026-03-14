@@ -13,8 +13,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
-// Official Banner Ad Unit ID
-private const val BANNER_AD_UNIT_ID = "ca-app-pub-2947021890810905/6252375392"
+// Ad unit IDs are managed centrally in AdConfig.kt
 
 @Composable
 fun AdBanner(modifier: Modifier = Modifier) {
@@ -27,7 +26,7 @@ fun AdBanner(modifier: Modifier = Modifier) {
         factory = { context ->
             AdView(context).apply {
                 setAdSize(AdSize.BANNER)
-                adUnitId = BANNER_AD_UNIT_ID
+                adUnitId = AdConfig.BANNER_AD_UNIT_ID
                 loadAd(AdRequest.Builder().build())  // Load only once in factory
             }
         }

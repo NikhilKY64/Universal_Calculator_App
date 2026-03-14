@@ -25,7 +25,7 @@ import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.google.android.gms.ads.nativead.NativeAdView
 import com.universalcalculator.R
 
-private const val NATIVE_AD_UNIT_ID = "ca-app-pub-2947021890810905/1349648482"
+// Ad unit IDs are managed centrally in AdConfig.kt
 
 @Composable
 fun NativeAdBanner(modifier: Modifier = Modifier) {
@@ -34,7 +34,7 @@ fun NativeAdBanner(modifier: Modifier = Modifier) {
 
     // Load the Native Ad once
     DisposableEffect(Unit) {
-        val adLoader = AdLoader.Builder(context, NATIVE_AD_UNIT_ID)
+        val adLoader = AdLoader.Builder(context, AdConfig.NATIVE_AD_UNIT_ID)
             .forNativeAd { ad: NativeAd ->
                 nativeAd?.destroy() // Destroy previous ad if there was one
                 nativeAd = ad
